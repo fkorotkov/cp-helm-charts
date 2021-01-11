@@ -8,7 +8,7 @@ blocks:
   - name: Run E2E Chart Test
     task:
       jobs:
-        - name:
+        - name: Run e2e-kind
           commands:
             - checkout
             - ci/e2e-kind.sh
