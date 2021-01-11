@@ -68,7 +68,7 @@ create_kind_cluster() {
 }
 
 install_charts() {
-    docker_exec ct lint-and-install
+    docker_exec ct lint-and-install --all
     echo 'Charts applied'
 }
 

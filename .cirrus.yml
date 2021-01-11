@@ -1,0 +1,24 @@
+task:
+  name: Lint Scripts
+  alias: lint
+  container:
+    image: koalaman/shellcheck-alpine
+    cpu: 1
+    memory: 2G
+  lint_script: shellcheck -x ci/e2e-kind.sh
+
+task:
+  name: Lint Charts
+  alias: lint
+  container:
+    image: quay.io/helmpack/chart-testing:v3.1.1
+    cpu: 1
+    memory: 2G
+  lint_script: ct lint --all --config ci/ct.yaml
+
+docker_builder:
+  name: E2E Tests
+  env:
+    HOME: /root
+  depends_on: lint
+  test_script:  ./ci/e2e-kind.sh
