@@ -1,0 +1,14 @@
+version: v1.0
+name: Run in Docker
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+blocks:
+  - name: Run E2E Chart Test
+    task:
+      jobs:
+        - name:
+          commands:
+            - checkout
+            - ci/e2e-kind.sh
